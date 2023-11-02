@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "config": {"view": {"continuousWidth": 300, "continuousHeight": 300}},
+  "vconcat": [
+    {
+      "layer": [
+        {
+          "mark": {"type": "line"},
+          "encoding": {
+            "color": {"field": "Range Category", "type": "nominal"},
+            "detail": {"field": "Range Category", "type": "nominal"},
+            "tooltip": [
+              {"field": "Model Year", "type": "quantitative"},
+              {"field": "Range Category", "type": "nominal"},
+              {"field": "Average Electric Range", "type": "quantitative"}
+            ],
+            "x": {"field": "Model Year", "type": "ordinal"},
+            "y": {"field": "Average Electric Range", "type": "quantitative"}
+          }
+        },
+        {
+          "mark": {"type": "circle"},
+          "encoding": {
+            "color": {"field": "Range Category", "type": "nominal"},
+            "opacity": {
+              "condition": {"param": "param_17", "value": 1, "empty": false},
+              "value": 0
+            },
+            "tooltip": [
+              {"field": "Model Year", "type": "quantitative"},
+              {"field": "Range Category", "type": "nominal"},
+              {"field": "Average Electric Range", "type": "quantitative"}
+            ],
+            "x": {"field": "Model Year", "type": "ordinal"},
+            "y": {"field": "Average Electric Range", "type": "quantitative"}
+          },
+          "name": "view_23"
+        },
+        {
+          "mark": {"type": "rule", "color": "#aaa"},
+          "encoding": {"x": {"field": "Model Year", "type": "ordinal"}},
+          "transform": [{"filter": {"param": "param_17", "empty": false}}]
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 5,
+            "dy": -5,
+            "stroke": "white",
+            "strokeWidth": 2
+          },
+          "encoding": {
+            "color": {"field": "Range Category", "type": "nominal"},
+            "text": {"field": "Average Electric Range", "type": "quantitative"},
+            "tooltip": [
+              {"field": "Model Year", "type": "quantitative"},
+              {"field": "Range Category", "type": "nominal"},
+              {"field": "Average Electric Range", "type": "quantitative"}
+            ],
+            "x": {"field": "Model Year", "type": "ordinal"},
+            "y": {"field": "Average Electric Range", "type": "quantitative"}
+          },
+          "transform": [{"filter": {"param": "param_17", "empty": false}}]
+        },
+        {
+          "mark": {"type": "text", "align": "left", "dx": 5, "dy": -5},
+          "encoding": {
+            "color": {"field": "Range Category", "type": "nominal"},
+            "text": {"field": "Average Electric Range", "type": "quantitative"},
+            "tooltip": [
+              {"field": "Model Year", "type": "quantitative"},
+              {"field": "Range Category", "type": "nominal"},
+              {"field": "Average Electric Range", "type": "quantitative"}
+            ],
+            "x": {"field": "Model Year", "type": "ordinal"},
+            "y": {"field": "Average Electric Range", "type": "quantitative"}
+          },
+          "transform": [{"filter": {"param": "param_17", "empty": false}}]
+        }
+      ],
+      "height": 400,
+      "title": "Average Electric Range of Vehicles Over Model Years by Range Category",
+      "transform": [{"filter": {"param": "param_18"}}],
+      "width": 700
+    },
+    {
+      "mark": {"type": "area"},
+      "encoding": {
+        "color": {"field": "Range Category", "type": "nominal"},
+        "x": {"field": "Model Year", "type": "ordinal"},
+        "y": {"field": "Average Electric Range", "type": "quantitative"}
+      },
+      "height": 60,
+      "name": "view_24",
+      "title": "Drag the brush to filter data on the main chart",
+      "width": 700
+    }
+  ],
+  "data": {"name": "data-261ac1b272a23b876578f6ff6c9a0244"},
+  "params": [
+    {
+      "name": "param_17",
+      "select": {
+        "type": "point",
+        "encodings": ["x"],
+        "nearest": true,
+        "on": "mouseover"
+      },
+      "views": ["view_23"]
+    },
+    {
+      "name": "param_18",
+      "select": {"type": "interval", "encodings": ["x"]},
+      "views": ["view_24"]
+    }
+  ],
+  "spacing": 5,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.15.1.json",
+  "datasets": {
+    "data-261ac1b272a23b876578f6ff6c9a0244": [
+      {
+        "Model Year": 1997,
+        "Range Category": "0-100",
+        "Average Electric Range": 39
+      },
+      {
+        "Model Year": 1998,
+        "Range Category": "0-100",
+        "Average Electric Range": 58
+      },
+      {
+        "Model Year": 1999,
+        "Range Category": "0-100",
+        "Average Electric Range": 74
+      },
+      {
+        "Model Year": 2000,
+        "Range Category": "0-100",
+        "Average Electric Range": 58
+      },
+      {
+        "Model Year": 2002,
+        "Range Category": "0-100",
+        "Average Electric Range": 95
+      },
+      {
+        "Model Year": 2003,
+        "Range Category": "0-100",
+        "Average Electric Range": 95
+      },
+      {
+        "Model Year": 2008,
+        "Range Category": "201-300",
+        "Average Electric Range": 220
+      },
+      {
+        "Model Year": 2010,
+        "Range Category": "0-100",
+        "Average Electric Range": 100
+      },
+      {
+        "Model Year": 2010,
+        "Range Category": "201-300",
+        "Average Electric Range": 245
+      },
+      {
+        "Model Year": 2011,
+        "Range Category": "0-100",
+        "Average Electric Range": 69.30671736375159
+      },
+      {
+        "Model Year": 2011,
+        "Range Category": "201-300",
+        "Average Electric Range": 245
+      },
+      {
+        "Model Year": 2012,
+        "Range Category": "0-100",
+        "Average Electric Range": 43.580363147276394
+      },
+      {
+        "Model Year": 2012,
+        "Range Category": "101-200",
+        "Average Electric Range": 103
+      },
+      {
+        "Model Year": 2012,
+        "Range Category": "201-300",
+        "Average Electric Range": 265
+      },
+      {
+        "Model Year": 2013,
+        "Range Category": "0-100",
+        "Average Electric Range": 53.99814422057264
+      },
+      {
+        "Model Year": 2013,
+        "Range Category": "101-200",
+        "Average Electric Range": 103
+      },
+      {
+        "Model Year": 2013,
+        "Range Category": "201-300",
+        "Average Electric Range": 208
+      },
+      {
+        "Model Year": 2014,
+        "Range Category": "0-100",
+        "Average Electric Range": 52.02533378979801
+      },
+      {
+        "Model Year": 2014,
+        "Range Category": "101-200",
+        "Average Electric Range": 103
+      },
+      {
+        "Model Year": 2014,
+        "Range Category": "201-300",
+        "Average Electric Range": 208
+      },
+      {
+        "Model Year": 2015,
+        "Range Category": "0-100",
+        "Average Electric Range": 66.73880208333334
+      },
+      {
+        "Model Year": 2015,
+        "Range Category": "201-300",
+        "Average Electric Range": 208
+      },
+      {
+        "Model Year": 2016,
+        "Range Category": "0-100",
+        "Average Electric Range": 59.17384806973848
+      },
+      {
+        "Model Year": 2016,
+        "Range Category": "101-200",
+        "Average Electric Range": 200
+      },
+      {
+        "Model Year": 2016,
+        "Range Category": "201-300",
+        "Average Electric Range": 210
+      },
+      {
+        "Model Year": 2017,
+        "Range Category": "0-100",
+        "Average Electric Range": 42.76616052060738
+      },
+      {
+        "Model Year": 2017,
+        "Range Category": "101-200",
+        "Average Electric Range": 145.15138721351025
+      },
+      {
+        "Model Year": 2017,
+        "Range Category": "201-300",
+        "Average Electric Range": 226.26192541196878
+      },
+      {
+        "Model Year": 2018,
+        "Range Category": "0-100",
+        "Average Electric Range": 34.27850633474105
+      },
+      {
+        "Model Year": 2018,
+        "Range Category": "101-200",
+        "Average Electric Range": 145.56228253305497
+      },
+      {
+        "Model Year": 2018,
+        "Range Category": "201-300",
+        "Average Electric Range": 222.30135214579659
+      },
+      {
+        "Model Year": 2019,
+        "Range Category": "0-100",
+        "Average Electric Range": 24.956756756756757
+      },
+      {
+        "Model Year": 2019,
+        "Range Category": "101-200",
+        "Average Electric Range": 142.27936359382312
+      },
+      {
+        "Model Year": 2019,
+        "Range Category": "201-300",
+        "Average Electric Range": 229.52421991084697
+      },
+      {
+        "Model Year": 2020,
+        "Range Category": "0-100",
+        "Average Electric Range": 24.18991793669402
+      },
+      {
+        "Model Year": 2020,
+        "Range Category": "101-200",
+        "Average Electric Range": 153.8118811881188
+      },
+      {
+        "Model Year": 2020,
+        "Range Category": "201-300",
+        "Average Electric Range": 271.4058219178082
+      },
+      {
+        "Model Year": 2020,
+        "Range Category": "300+",
+        "Average Electric Range": 320.7021436630312
+      },
+      {
+        "Model Year": 2021,
+        "Range Category": "0-100",
+        "Average Electric Range": 5.694348137141599
+      },
+      {
+        "Model Year": 2021,
+        "Range Category": "101-200",
+        "Average Electric Range": 124.99371069182389
+      },
+      {
+        "Model Year": 2021,
+        "Range Category": "201-300",
+        "Average Electric Range": 222.2683615819209
+      },
+      {
+        "Model Year": 2022,
+        "Range Category": "0-100",
+        "Average Electric Range": 4.470448577286953
+      },
+      {
+        "Model Year": 2023,
+        "Range Category": "0-100",
+        "Average Electric Range": 4.479408829795841
+      },
+      {
+        "Model Year": 2024,
+        "Range Category": "0-100",
+        "Average Electric Range": 17.68380062305296
+      }
+    ]
+  }
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
